@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model LoginModel
 <!DOCTYPE html>
 
 <html>
@@ -17,37 +17,43 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
+            @*<label asp-for="" asp-for的TagHelper提示。*@
             <a href="#" target="_blank"><b>Fonour</b></a>
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">权限管理系统</p>
-            <form action="/Home/Index" method="post">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            <form asp-controller="Login" asp-action="Index" method="post" onsubmit="onSubmit()">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="用户名" />
+                    <input asp-for="UserName" type="text" class="form-control" placeholder="用户名" />
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @*<span asp-validation-for="UserName" class="text-danger"></span>*@
                 </div>
                 <div class=" form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="密码" />
+                    <input asp-for="Password" type="password" class="form-control" placeholder="密码" />
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox" />记住我
+                                <input asp-for="RememberMe" type="checkbox" />记住我
                             </label>
                         </div>
                     </div>
                     <div class="col-xs-4">
-                       <button type="submit" class=" btn btn-primary btn-block btn-flat">登录</button>
+                        <button id="btnLogin" type="submit" class=" btn btn-primary btn-block btn-flat">登录</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <input id="errorInfo" type="hidden" value="@ViewBag.ErrorInfo" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/iCheck/icheck.js"></script>
+    <script src="~/lib/layer/layer.js"></script>
+    <script src="~/lib/jquery.cookie/src/jquery.cookie.js"></script>
     <script>
         $(function () {
             $('input').iCheck({
@@ -55,7 +61,35 @@
                 radioClass: 'iradio_square-blue',
                 increaseArea: '20%' // optional
             });
+
+            //显示服务端验证的错误信息
+            if ($("#errorInfo").val()) {
+                layer.tips($("#errorInfo").val(), "#btnLogin");
+            }
+
+            //判断之前是否有设置cookie,如果有，则设置【记住我】选择框
+            if ($.cookie("fonour_userName") != undefined) {
+                $("#RememberMe").attr("checked", "checked");
+            } else {
+                $("#RememberMe").removeAttr("checked");
+            }
+
+            //读取cookie
+            if ($("#RememberMe:checked").length > 0) {
+                $("#UserName").val($.cookie("fonour_userName"));
+                $("#Password").val($.cookie("fonour_password"));
+            }
         });
+
+        function onSubmit() {
+            if ($("#RememberMe:checked").length > 0) {
+                $.cookie("fonour_userName", $("#UserName").val());
+                $.cookie("fonour_password", $("#Password").val());
+            } else {
+                $.removeCookie("fonour_userName");
+                $.removeCookie("fonour_password");
+            }
+        }
     </script>
 </body>
 </html>

@@ -9,3 +9,14 @@ C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debu
 C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb
 C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb
 C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.csprojResolveAssemblyReference.cache
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.deps.json
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.runtimeconfig.json
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.runtimeconfig.dev.json
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.dll
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.csprojResolveAssemblyReference.cache
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.csproj.CoreCompileInputs.cache
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.AssemblyInfoInputs.cache
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.AssemblyInfo.cs
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.dll
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb

@@ -52,8 +52,12 @@ namespace AspNetCoreLoginAndAuth
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
 
+            
             //添加MVC服务
             services.AddMvc();
+
+            //添加Session服务
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +81,9 @@ namespace AspNetCoreLoginAndAuth
 
             //使用静态文件
             app.UseStaticFiles();
+
+            //使用Session
+            app.UseSession();
 
             //使用MVC并使用默认路由设置
             //app.UseMvcWithDefaultRoute();
