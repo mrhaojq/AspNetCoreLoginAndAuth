@@ -1,0 +1,11 @@
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.deps.json
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.runtimeconfig.json
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.runtimeconfig.dev.json
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.dll
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\bin\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.csprojResolveAssemblyReference.cache
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.csproj.CoreCompileInputs.cache
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.AssemblyInfoInputs.cache
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.AssemblyInfo.cs
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.dll
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Release\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb

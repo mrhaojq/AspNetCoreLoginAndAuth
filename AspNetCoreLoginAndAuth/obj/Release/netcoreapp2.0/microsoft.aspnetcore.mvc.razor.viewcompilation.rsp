@@ -1,0 +1,8 @@
+C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=AspNetCoreLoginAndAuth
+--content-root=C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth
+--file=C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\Views\Home\Index.cshtml
+--file=C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\Views\Shared\Error.cshtml
+--file=C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\Views\Shared\_Layout.cshtml
+--file=C:\Users\zyl\source\repos\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\Views\_ViewStart.cshtml
