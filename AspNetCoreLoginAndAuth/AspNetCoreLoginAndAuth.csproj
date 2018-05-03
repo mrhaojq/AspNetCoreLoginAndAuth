@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AdminLTE" Version="2.3.3" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Bower" Version="1.3.11" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />

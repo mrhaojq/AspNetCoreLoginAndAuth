@@ -53,35 +53,53 @@ namespace AspNetCoreLoginAndAuth.Data.IRepositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        TEntity Insert(TEntity entity);
+        TEntity Insert(TEntity entity,bool autoSave=true);
 
         /// <summary>
         /// 更新实体
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        TEntity Update(TEntity entity);
+        TEntity Update(TEntity entity, bool autoSave = true);
 
         /// <summary>
         /// 新增或更新实体
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        TEntity InsertOrUpdate(TEntity entity);
+        TEntity InsertOrUpdate(TEntity entity,bool autoSave = true);
 
         /// <summary>
         /// 删除实体
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Delete(TEntity entity);
+        void Delete(TEntity entity, bool autoSave = true);
 
         /// <summary>
         /// 删除实体
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        bool Delete(TPrimaryKey id);
+        void Delete(TPrimaryKey id, bool autoSave = true);
+
+        /// <summary>
+        /// 根据条件删除实体
+        /// </summary>
+        /// <param name="where">lambda表达式条件</param>
+        /// <param name="autoSave">是否自动保存</param>
+        void Delete(Expression<Func<TEntity, bool>> where, bool autoSave = true);
+
+        /// <summary>
+        /// 分页获取数据
+        /// </summary>
+        /// <param name="startPage">起始页</param>
+        /// <param name="pageSize">页面条目</param>
+        /// <param name="rowCount">数据总数</param>
+        /// <param name="where">查询条件</param>
+        /// <param name="order">排序</param>
+        /// <returns></returns>
+        IQueryable<TEntity> LoadPageList(int startPage, int pageSize, out int rowCount, Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, object>> order);
     }
 
     public interface IRepository<TEntity> : IRepository<TEntity, Guid> where TEntity : Entity

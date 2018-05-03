@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
-namespace AspNetCoreLoginAndAuth.Services.UserApp
+namespace AspNetCoreLoginAndAuth.Data.IRepositories
 {
-   public interface IUserAppService
+    public interface IMenuRepository:IRepository<Menu>
     {
-        User CheckUser(string userName, string password);
     }
 }

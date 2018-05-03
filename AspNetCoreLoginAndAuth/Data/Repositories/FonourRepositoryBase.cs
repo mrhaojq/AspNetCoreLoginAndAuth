@@ -67,9 +67,13 @@ namespace AspNetCoreLoginAndAuth.Data.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public TEntity Insert(TEntity entity)
+        public TEntity Insert(TEntity entity, bool autoSave = true)
         {
             _dbContext.Set<TEntity>().Add(entity);
+            if (autoSave)
+            {
+                Save();
+            }
             return entity;
         }
 
@@ -78,11 +82,25 @@ namespace AspNetCoreLoginAndAuth.Data.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public TEntity Update(TEntity entity)
+        public TEntity Update(TEntity entity,bool autoSave=true)
         {
-            _dbContext.Set<TEntity>().Attach(entity);
-            _dbContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            //_dbContext.Set<TEntity>().Attach(entity);
+            //_dbContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            //return entity;
+
+            var obj = Get(entity.Id);
+            EntityToEntity(entity,obj);
+            if (autoSave)
+            { Save(); }
             return entity;
+        }
+
+        private void EntityToEntity<T>(T pTargetObjSrc, T pTargetObjDest)
+        {
+            foreach (var item in typeof(T).GetProperties())
+            {
+                item.SetValue(pTargetObjDest,item.GetValue(pTargetObjSrc,new object[] { }),null);
+            }
         }
 
         /// <summary>
@@ -90,13 +108,13 @@ namespace AspNetCoreLoginAndAuth.Data.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public TEntity InsertOrUpdate(TEntity entity)
+        public TEntity InsertOrUpdate(TEntity entity,bool autoSave=true)
         {
             if (Get(entity.Id) != null)
             {
-                return Update(entity);
+                return Update(entity,autoSave);
             }
-            return Insert(entity);
+            return Insert(entity,autoSave);
         }
 
         /// <summary>
@@ -104,17 +122,70 @@ namespace AspNetCoreLoginAndAuth.Data.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Delete(TEntity entity)
+        public void Delete(TEntity entity,bool autoSave=true)
         {
             _dbContext.Set<TEntity>().Remove(entity);
-            return true;
+            if (autoSave)
+            {
+                Save();
+            }
         }
 
-        public bool Delete(TPrimaryKey id)
+        public void Delete(TPrimaryKey id,bool autoSave=true)
         {
             _dbContext.Set<TEntity>().Remove(Get(id));
-            return true;
+            if (autoSave)
+            {
+                Save();
+            }
         }
+
+        /// <summary>
+        /// 根据条件删除实体
+        /// </summary>
+        /// <param name="where">lambda表达式条件</param>
+        /// <param name="autoSave">是否自动保存</param>
+        public void Delete(Expression<Func<TEntity,bool>> where,bool autoSave=true)
+        {
+            _dbContext.Set<TEntity>().Where(where).ToList().ForEach(it=>_dbContext.Set<TEntity>().Remove(it));
+            if (autoSave)
+            {
+                Save();
+            }
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="startPage"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="rowCount"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public IQueryable<TEntity> LoadPageList(int startPage,int pageSize,out int rowCount,Expression<Func<TEntity,bool>> where=null,Expression<Func<TEntity,object>> order=null)
+        {
+            var result = from p in _dbContext.Set<TEntity>()
+                         select p;
+
+            if (where!=null)
+            {
+                result = result.Where(where);
+            }
+               
+            if (order!=null)
+            {
+                result = result.OrderBy(order);
+            }
+            else
+            {
+                result = result.OrderBy(m=>m.Id);
+            }
+
+            rowCount = result.Count();
+            return result.Skip((startPage - 1) * pageSize).Take(pageSize);
+        }
+
 
         /// <summary>
         /// 事务性保存
@@ -139,6 +210,7 @@ namespace AspNetCoreLoginAndAuth.Data.Repositories
 
             return Expression.Lambda<Func<TEntity, bool>>(lambdaBody, lambdaParam);
         }
+       
     }
 
     public abstract class FonourRepositoryBase<TEntity>:FonourRepositoryBase<TEntity,Guid> where TEntity:Entity

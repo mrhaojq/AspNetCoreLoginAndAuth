@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using AspNetCoreLoginAndAuth.Data.IRepositories;
 using AspNetCoreLoginAndAuth.Data.Repositories;
 using AspNetCoreLoginAndAuth.Services.UserApp;
+using AspNetCoreLoginAndAuth.Services;
+using AspNetCoreLoginAndAuth.Services.MenuApp;
 
 namespace AspNetCoreLoginAndAuth
 {
@@ -28,6 +30,9 @@ namespace AspNetCoreLoginAndAuth
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            //初始化映射关系
+            FonourMapper.Initialize();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -51,7 +56,8 @@ namespace AspNetCoreLoginAndAuth
             //添加仓储及服务进行依赖注入的实现
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
-
+            services.AddScoped<IMenuRepository,MenuRepository>();
+            services.AddScoped<IMenuAppService,MenuAppService>();
             
             //添加MVC服务
             services.AddMvc();
