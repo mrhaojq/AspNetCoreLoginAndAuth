@@ -15,6 +15,8 @@ using AspNetCoreLoginAndAuth.Data.Repositories;
 using AspNetCoreLoginAndAuth.Services.UserApp;
 using AspNetCoreLoginAndAuth.Services;
 using AspNetCoreLoginAndAuth.Services.MenuApp;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace AspNetCoreLoginAndAuth
 {
@@ -85,8 +87,12 @@ namespace AspNetCoreLoginAndAuth
                 app.UseExceptionHandler("/Shared/Error");
             }
 
-            //使用静态文件
+            //使用静态文件 wwwroot
             app.UseStaticFiles();
+            //使网站可以访问Views/Menu/Index.js文件
+            app.UseStaticFiles(new StaticFileOptions() {
+                FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory())
+            });
 
             //使用Session
             app.UseSession();

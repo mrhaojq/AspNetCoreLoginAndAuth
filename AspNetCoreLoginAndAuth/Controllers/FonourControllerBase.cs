@@ -20,5 +20,18 @@ namespace AspNetCoreLoginAndAuth.Controllers
             }
             base.OnActionExecuting(context);
         }
+
+        public string GetModelStateError()
+        {
+            foreach (var item in ModelState.Values)
+            {
+                if (item.Errors.Count>0)
+                {
+                    return item.Errors[0].ErrorMessage;
+                }
+            }
+
+            return "";
+        }
     }
 }
