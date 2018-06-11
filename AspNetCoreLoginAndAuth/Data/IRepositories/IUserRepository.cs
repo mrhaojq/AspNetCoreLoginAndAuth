@@ -12,5 +12,7 @@ namespace AspNetCoreLoginAndAuth.Data.IRepositories
         //继承关系，因此IUserRepository中拥有其父类的父类IRepository<TEntity, TPrimaryKey>中定义的所有方法定义（需要在具体类中实现接口定义的方法）
 
         User CheckUser(string userName, string password);
+
+        User GetWithRoles(Guid id);
     }
 }

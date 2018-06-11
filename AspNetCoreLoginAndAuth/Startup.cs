@@ -15,6 +15,7 @@ using AspNetCoreLoginAndAuth.Data.Repositories;
 using AspNetCoreLoginAndAuth.Services.UserApp;
 using AspNetCoreLoginAndAuth.Services;
 using AspNetCoreLoginAndAuth.Services.MenuApp;
+using AspNetCoreLoginAndAuth.Services.RoleApp;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 
@@ -60,6 +61,8 @@ namespace AspNetCoreLoginAndAuth
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuRepository,MenuRepository>();
             services.AddScoped<IMenuAppService,MenuAppService>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleAppService, RoleAppService>();
             
             //添加MVC服务
             services.AddMvc();

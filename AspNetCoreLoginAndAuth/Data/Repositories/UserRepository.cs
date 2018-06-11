@@ -24,5 +24,20 @@ namespace AspNetCoreLoginAndAuth.Data.Repositories
         {
             return _dbContext.Set<User>().FirstOrDefault(it=>it.UserName==userName&&it.Password==password);
         }
+
+        /// <summary>
+        /// 根据Id获取实体
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public User GetWithRoles(Guid id)
+        {
+            var user = _dbContext.Set<User>().FirstOrDefault(it => it.Id == id);
+            if (user!=null)
+            {
+                user.UserRoles = _dbContext.Set<UserRole>().Where(it => it.UserId == id).ToList();
+            }
+            return user;
+        }
     }
 }

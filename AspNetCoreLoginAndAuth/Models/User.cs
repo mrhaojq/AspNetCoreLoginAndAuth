@@ -21,7 +21,7 @@ namespace AspNetCoreLoginAndAuth.Models
         public int IsDeleted { get; set; }
         public virtual Department Department { get; set; }
         //public virtual User CreateUser { get; set; }
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
 
     }
 }

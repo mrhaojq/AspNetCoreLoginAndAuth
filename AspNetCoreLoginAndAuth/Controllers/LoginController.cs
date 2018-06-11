@@ -7,6 +7,7 @@ using AspNetCoreLoginAndAuth.Services.UserApp;
 using AspNetCoreLoginAndAuth.Models;
 using AspNetCoreLoginAndAuth.Models.ViewModels;
 using AspNetCoreLoginAndAuth.Utility;
+using Microsoft.AspNetCore.Http;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,6 +40,7 @@ namespace AspNetCoreLoginAndAuth.Controllers
                 if (user!=null)
                 {
                     //记录Session
+                    HttpContext.Session.SetString("CurrentUserId",user.Id.ToString());
                     HttpContext.Session.Set("CurrentUser",ByteConvertHelper.ObjectToBytes(user));
                     //跳转到系统首页
                     return RedirectToAction(nameof(Index),"Home");
