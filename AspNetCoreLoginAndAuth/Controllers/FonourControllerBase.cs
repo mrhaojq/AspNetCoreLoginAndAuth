@@ -9,6 +9,10 @@ namespace AspNetCoreLoginAndAuth.Controllers
 {
     public class FonourControllerBase: Controller
     {
+        /// <summary>
+        /// 检查登录授权信息
+        /// </summary>
+        /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             byte[] result;

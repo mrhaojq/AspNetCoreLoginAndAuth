@@ -1,5 +1,7 @@
 ﻿using AspNetCoreLoginAndAuth.Models;
+using AspNetCoreLoginAndAuth.Services.DepartmentApp.Dtos;
 using AspNetCoreLoginAndAuth.Services.MenuApp.Dtos;
+using AspNetCoreLoginAndAuth.Services.RoleApp.Dtos;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,12 @@ namespace AspNetCoreLoginAndAuth.Services
             {
                 cfg.CreateMap<Menu,MenuDto>();
                 cfg.CreateMap<MenuDto,Menu>();
+                cfg.CreateMap<Department, DepartmentDto>();
+                cfg.CreateMap<DepartmentDto, Department>();
+                cfg.CreateMap<Role, RoleDto>();
+                cfg.CreateMap<RoleDto, Role>();
+                cfg.CreateMap<RoleMenu, RoleMenuDto>();
+                cfg.CreateMap<RoleMenuDto, RoleMenu>();
             });
         }
     }

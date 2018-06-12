@@ -19,3 +19,4 @@ D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAn
 D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.AssemblyInfo.cs
 D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.dll
 D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.pdb
+D:\20180103_Net\AspNetCoreLoginAndAuth2\AspNetCoreLoginAndAuth\AspNetCoreLoginAndAuth\obj\Debug\netcoreapp2.0\AspNetCoreLoginAndAuth.csprojAssemblyReference.cache
