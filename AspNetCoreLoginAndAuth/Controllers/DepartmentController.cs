@@ -30,7 +30,7 @@ namespace AspNetCoreLoginAndAuth.Controllers
             List<TreeModel> treeModels = new List<TreeModel>();
             foreach (var dto in dtos)
             {
-                treeModels.Add(new TreeModel() { Id=dto.Id.ToString(),Text=dto.Name,Parent= dto.ParentId==Guid.Empty?"#":dto.ParentId.ToString()});
+                treeModels.Add(new TreeModel() { Id = dto.Id.ToString(), Text = dto.Name, Parent = dto.ParentId == Guid.Empty ? "#" : dto.ParentId.ToString() });
             }
             return Json(treeModels);
         }
@@ -39,11 +39,12 @@ namespace AspNetCoreLoginAndAuth.Controllers
         public IActionResult GetChildrenByParent(Guid parentId, int startPage, int pageSize)
         {
             int rowCount = 0;
-            var result = _departmentAppService.GetChildrenByParent(parentId,startPage,pageSize,out rowCount);
-            return Json(new {
+            var result = _departmentAppService.GetChildrenByParent(parentId, startPage, pageSize, out rowCount);
+            return Json(new
+            {
                 rowCount = rowCount,
-                pageSize=Math.Ceiling(Convert.ToDecimal(rowCount)/pageSize),
-                rows=result
+                pageSize = Math.Ceiling(Convert.ToDecimal(rowCount) / pageSize),
+                rows = result
             });
         }
 
@@ -82,6 +83,40 @@ namespace AspNetCoreLoginAndAuth.Controllers
                     Result = "Faild",
                     Message = ex.Message
                 });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _departmentAppService.Delete(id);
+                return Json(new { Result = "success" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "faild", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteMuti(string ids)
+        {
+            try
+            {
+                string[] idArray = ids.Split(',');
+                List<Guid> delIds = new List<Guid>();
+                foreach (string  id in idArray)
+                {
+                    delIds.Add(Guid.Parse(id));
+                }
+                _departmentAppService.DeleteBatch(delIds);
+                return Json(new { Result = "success" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "faild", Message = ex.Message });
             }
         }
     }

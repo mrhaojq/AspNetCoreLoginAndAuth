@@ -173,10 +173,59 @@ function save() {
 
 //批量删除
 function deleteMulti() {
-    alert("deleteMulti");
+    //alert("deleteMulti");
+    var ids = "";
+    $(".checkboxs").each(function () {
+        if ($(this).prop("checked")==true) {
+            ids+=$(this).val()+"," //加载数据的时候创建checkbox时 设置了 value的值
+        }
+    });
+
+    ids = ids.substring(0, ids.length - 1);//去除左后一个逗号
+    if (ids.length == 0) {
+        layer.alert("请选择要删除的记录。");
+        return;
+    }
+
+    //询问框
+    layer.confirm("您确认删除选定的记录吗？",
+        {btn:["确定","取消"]},
+        function () {
+            var sendData = { "ids": ids };
+            $.ajax({
+                type: 'POST',
+                url: '/Department/DeleteMuti',
+                data: sendData,
+                success: function (data) {
+                    if (data.result=="success") {
+                        initTree();
+                        layer.closeAll();
+                    } else {
+                        layer.alert("删除失败！");
+                    }
+                }
+            });
+    });
 }
 
 //删除单条数据
 function deleteSingle(id) {
-    alert("DeleteSingle");
+    layer.confirm("您确认删除选定的记录吗？",
+        {btn:["确定","取消"]},
+        function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Department/Delete',
+                data: { "id": id },
+                success: function (data) {
+                    if (data.result == "success") {
+                        initTree();
+                        layer.closeAll();
+                    } else {
+                        layer.alert("删除失败！");
+                    }
+                }
+            });
+        }
+    );
 }

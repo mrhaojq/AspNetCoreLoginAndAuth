@@ -41,5 +41,23 @@ namespace AspNetCoreLoginAndAuth.Services.DepartmentApp
             var department = _departmentRepository.InsertOrUpdate(Mapper.Map<Department>(dto));
             return department == null ? false : true;
         }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id">Id</param>
+        public void Delete(Guid id)
+        {
+            _departmentRepository.Delete(id);
+        }
+
+        /// <summary>
+        /// 根据Id集合批量删除
+        /// </summary>
+        /// <param name="ids">Id集合</param>
+        public void DeleteBatch(List<Guid> ids)
+        {
+            _departmentRepository.Delete(it => ids.Contains(it.Id));
+        }
     }
 }

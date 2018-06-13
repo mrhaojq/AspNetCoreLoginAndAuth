@@ -38,5 +38,16 @@ namespace AspNetCoreLoginAndAuth.Services.DepartmentApp
         /// <returns></returns>
         bool InsertOrUpdate(DepartmentDto dto);
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id">Id</param>
+        void Delete(Guid id);
+
+        /// <summary>
+        /// 根据Id集合批量删除
+        /// </summary>
+        /// <param name="ids">Id集合</param>
+        void DeleteBatch(List<Guid> ids);
     }
 }
